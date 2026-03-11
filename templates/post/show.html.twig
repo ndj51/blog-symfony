@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {# On appelle le script uniquement ici #}
+    {{ parent() }}
+    <script src="{{ asset('js/share.js') }}"></script>
+{% endblock %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+<div class="container post-container">
+    
+    <div class="back-button-wrapper">
+        <a href="{{ path('app_post') }}" class="pill">← Retour aux articles</a>
+    </div>
+
+    <article class="main-display-card">
+        <header>
+            <span class="category-badge">{{ post.category.name }}</span>
+            <h1 class="main-title">{{ post.title }}</h1>
+            <p class="post-metadata">
+                Posté par <strong>Admin</strong> • le {{ post.createdAt|date('d/m/Y') }}
+            </p>
+        </header>
+
+        <hr class="kenney-hr">
+
+       <div class="post-full-content">
+            {{ post.content|markdown_to_html|optimize_images}}
+        </div>
+
+        <div class="share-section">
+            <p class="share-title">Cet article t'a plu ?</p>
+            
+            <div class="share-actions">
+                <button id="copy-share-link" 
+                    class="pill active" 
+                    data-url="{{ url('app_post_show', {id: post.id}) }}">
+                    <span>🔗</span> Copier le lien de l'article
+                </button>
+                
+                <span id="share-success">✓ Lien copié !</span>
+            </div>
+        </div>
+    </article>
+
+    <div class="back-button-wrapper">
+        <a href="{{ path('app_post') }}" class="pill">← Retour aux articles</a>
+    </div>
+</div>
+{% endblock %}

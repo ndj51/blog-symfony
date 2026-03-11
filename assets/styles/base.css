@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; /* On changera la typo plus tard */
+    background-color: var(--primary-bg); /* Un fond gris clair ou coloré */
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 20px 20px; /* Petit motif de points pour le look "blueprint" */
+    padding-bottom: 50px;
+}
+
+
+.floating-card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: var(--radius);
+    
+    /* L'effet de relief "plastique" */
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    
+    /* Pour s'assurer que le contenu ne colle pas aux bordures */
+    padding: 20px;
+    
+    /* Un petit effet de transition si on veut que la carte réagisse au survol */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container {
+    max-width: 1200px; /* On définit une largeur maximale */
+    margin: 0 auto;    /* On centre le tout */
+    padding: 40px 20px; /* On ajoute de l'air en haut et sur les côtés */
+}

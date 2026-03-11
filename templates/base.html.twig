@@ -2,16 +2,56 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Le garage d'un Geek{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        
         {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {# 
+               On place l'importmap ici : comme ton app.js importe ton app.css, 
+               Symfony va injecter automatiquement ton design dès le début du chargement.
+            #}
+            {{ importmap('app') }}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="main-header floating-card">
+            <nav class="nav-container">
+                <div class="logo">
+                    <a href="{{ path('app_home') }}">Le garage d'un Geek</a>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="{{ path('app_home') }}" 
+                        class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">
+                        Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_post') }}" 
+                        class="{{ app.request.attributes.get('_route') starts with 'app_post' ? 'active' : '' }}">
+                        Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_contact') }}" 
+                        class="{{ app.request.attributes.get('_route') == 'app_contact' ? 'active' : '' }}">
+                        Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        {% block javascripts %}
+            {# 
+               Ce bloc reste vide ici car importmap est déjà chargé plus haut.
+               Il servira dans tes pages enfants (comme show.html.twig) 
+               pour ajouter des scripts spécifiques avec {{ parent() }}.
+            #}
+        {% endblock %}
     </body>
 </html>

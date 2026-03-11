@@ -1,3 +1,18 @@
-body {
-    background-color: skyblue;
-}
+/* assets/styles/app.css */
+
+/* 1. Configuration et Bases */
+@import "variables.css";
+@import "base.css";
+
+/* 2. Composants (Layout) */
+@import "components/header.css";
+@import "components/card.css";
+@import "components/footer.css";
+
+/* 3. Pages spécifiques */
+@import "pages/home.css";
+@import "pages/blog.css";
+@import "pages/contact.css";
+
+@import "pages/post-show.css";
+

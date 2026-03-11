@@ -1,0 +1,193 @@
+/* assets/styles/pages/home.css */
+
+/* 1. On centre la grosse carte et on lui donne de l'air */
+.main-display-card {
+    margin: 40px auto; /* Centre horizontalement */
+    padding: 50px;     /* Espace interne généreux */
+    max-width: 1100px; /* Empêche la carte d'être trop large sur grand écran */
+}
+
+/* 2. Le titre principal */
+.main-title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.2rem;
+    border-bottom: 4px solid var(--border-color);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* 3. La grille interne (2x2) */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px; /* On augmente l'espace pour que ça respire */
+}
+
+/* 4. Les mini-cartes à l'intérieur */
+.post-mini-card {
+    position: relative; /* Important pour le lien invisible */
+    background: #fff;
+    border: 3px solid var(--border-color); /* Bordure plus épaisse */
+    border-radius: 12px;
+    padding: 25px;
+    
+    /* Ombre dure style "Kenney" */
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    
+    /* Transition rapide et sèche pour l'effet plastique */
+    transition: all 0.1s steps(4); 
+}
+
+/* 5. Effet de survol "Action" */
+.post-mini-card:hover {
+    background-color: var(--accent-color);
+    /* On soulève la carte : elle monte à gauche, l'ombre s'agrandit à droite */
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px var(--border-color);
+}
+
+/* 6. On gère le contenu de la mini-carte */
+.post-mini-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.post-summary {
+    margin: 15px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Responsive : On repasse sur une colonne sur mobile */
+@media (max-width: 900px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-display-card {
+        padding: 25px;
+        width: 95%;
+    }
+}
+
+/* --- Styles pour les Catégories (Pills) --- */
+.category-pills {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.pill {
+    text-decoration: none;
+    color: var(--border-color);
+    background: white;
+    padding: 10px 20px;
+    border: 3px solid var(--border-color);
+    border-radius: 30px; /* Forme pilule */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.1s ease;
+    box-shadow: 3px 3px 0px var(--border-color);
+}
+
+.pill:hover, .pill.active {
+    background-color: var(--accent-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-color);
+}
+
+/* --- Éléments internes des cartes --- */
+.category-badge {
+    display: inline-block;
+    background-color: #eee;
+    border: 2px solid var(--border-color);
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.read-more-indicator {
+    font-weight: 900;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--border-color);
+    margin-top: 15px;
+}
+
+/* Mode Liste pour le Blog */
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espace entre les cartes */
+    max-width: 900px; /* Optionnel : évite que les cartes soient trop larges sur grand écran */
+    margin: 0 auto;   /* Centre la liste si max-width est utilisé */
+}
+
+/* On peut ajuster légèrement la carte quand elle est en liste si besoin */
+.blog-list .post-mini-card {
+    width: 100%; /* Prend toute la largeur du conteneur */
+}
+
+
+
+/* On définit juste la grille interne, le reste est géré par tes classes globales */
+.about-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr; /* Image à gauche, texte à droite */
+    gap: 40px;
+    align-items: center;
+}
+
+.about-avatar {
+    width: 100%;
+    /* Force un carré parfait pour que le 50% donne un cercle */
+    aspect-ratio: 1 / 1; 
+    /* Recadre l'image proprement à l'intérieur du cercle */
+    object-fit: cover; 
+    
+    border: 4px solid var(--tab-border-color);
+    border-radius: 50%; /* Voilà le secret du rond */
+    display: block;
+    background-color: var(--tab-active-background);
+}
+
+/* Version Mobile : on ajuste juste la taille si besoin */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+    .about-image-side {
+        width: 140px; /* Un peu plus grand pour le mobile */
+        margin: 0 auto;
+    }
+    .about-socials {
+        justify-content: center;
+    }
+}
+.about-text-body p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem; /* Espace entre les paragraphes */
+    color: var(--color-text);
+}
+
+.intro-lead {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: var(--tab-border-color); /* Utilise la couleur de tes bordures pour l'emphase */
+}
+
+.about-card {
+    padding: 3rem; /* Ça donnera de l'air à ton texte */
+}

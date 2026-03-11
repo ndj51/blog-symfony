@@ -1,0 +1,7 @@
+:root {
+    --primary-bg: #f0f0f0;         /* Gris très clair pour le fond du site */
+    --card-bg: #ffffff;
+    --border-color: #1a1a1a;       /* Noir profond pour les contours */
+    --accent-color: #ffca28;       /* Un jaune "Kenney" pour les interactions */
+    --shadow-offset: 4px;          /* L'épaisseur de l'ombre "plastique" */
+}

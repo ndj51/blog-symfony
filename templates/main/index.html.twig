@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{# /templeates/main/index.html.twig #}
+
+{% block body %}
+<div class="container">
+    {# 1. Hero / Header (On reste sur le style Kenney) #}
+    <header class="home-header">
+        <h1>Bienvenue sur mon site</h1>
+        <p>Découvrez mes dernières actualités et mes projets.</p>
+    </header>
+
+    <section class="about-section" style="margin-bottom: 50px;">
+        <div class="main-display-card floating-card">
+            <div class="about-grid">
+                <div class="about-image-side">
+                    <img src="{{ asset('images/avatar-marc.png') }}" alt="Marc" class="about-avatar">
+                </div>
+                
+                <div class="about-content-side">
+                    {#<span class="category-badge">Ma bio</span>#}
+                    <h2 class="main-title" style="margin-top: 10px;">Geek avant tout… </h2>
+                    <div class="about-text-body">
+                        <p>
+                            Moi c‘est Marc. Je suis né dans les années 80, et comme beaucoup de ceux de mon âge, j’ai grandi en regardant des mangas mais surtout sans informatique. Au début de celle-ci, je ne voyais pas trop l’intérêt de m’y intéresser. Je préférais largement bricoler mes mobylettes et sortir avec les potes.
+                        </p>
+
+                        <p>
+                            Jusqu’au jour où je me retrouve à mettre le nez dans un ordinateur grâce à des amis très passionnés par cet univers.
+                        </p>
+
+                        <p>
+                            Très vite, j’ai pris plaisir à mettre les mains dans ces machines. D’abord uniquement dans la partie logicielle : j’aimais réinstaller les systèmes d’exploitation, en tester de nouveaux… Puis je me suis mis à ouvrir le boîtier de mes ordinateurs et à modifier leurs composants. Suite à cela, je me suis lancé dans une formation en informatique et réseaux. J’ai pu pousser mes connaissances à un autre niveau, et je m’éclatais encore plus.
+                        </p>
+
+                        <p>
+                            Ce n’est que plus tard que j’ai découvert une tout autre façon d’utiliser un ordinateur. Une manière pour moi inédite : je pouvais être productif avec un PC. Ça doit te faire rire dit comme ça, mais avant cela, c’est comme si j’étais l’outil de l’ordinateur, et mon boulot consistait à faire en sorte qu’il fonctionne correctement. Alors je ne me plaignais pas, j’aimais vraiment ça, mais au final, c’est moi qui travaillais pour l’ordinateur. À partir de là, ce sera l’inverse : l’ordinateur deviendra mon outil.
+                        </p>
+
+                        <p>
+                            Sur ce site, je te présente tout ce qui peut m’intéresser au fil du temps. J’aime toucher à tout, et quand je décide de pousser un peu un domaine, j’aime aussi passer du temps à en parler, à l’expliquer aux autres. Je ne vois pas trop l’intérêt d’acquérir des compétences si je ne peux pas les partager.
+                        </p>
+
+                        <p>
+                            J’aime vraiment transmettre ce que j’ai appris, et c’est tout le but de ce site.
+                        </p>
+                    </div>
+                    <div class="about-socials" style="display: flex; gap: 10px;">
+                        <a href="#" class="pill">GitHub</a>
+                        <a href="#" class="pill">LinkedIn</a>
+                        <a href="#" class="pill">Youtube</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# 2. LA GRANDE CARTE BLANCHE (C'est ici que tout se joue) #}
+    <section class="main-display-card floating-card">
+        <h2 class="main-title">Derniers articles</h2>
+        
+        <div class="articles-grid">
+            {% for post in posts %}
+                {% include 'post/_card.html.twig' with {'post': post} %}
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="{{ path('app_post') }}" class="pill active">Voir tout le blog</a>
+        </div>
+    </section>
+
+    {# 3. Section Newsletter (en carte flottante aussi) #}
+    <section class="floating-card" style="margin-top: 50px; text-align: center;">
+        <h2>Restez informé</h2>
+        <p>Inscrivez-vous à la newsletter.</p>
+    </section>
+</div>
+{% endblock %}

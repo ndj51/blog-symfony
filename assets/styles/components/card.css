@@ -1,0 +1,79 @@
+.main-header {
+    /* Positionnement pour flotter en haut */
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    margin: 20px auto;
+    max-width: 95%; /* Ne touche pas les bords */
+    
+    /* Look "Plastic Card" */
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    
+    /* L'ombre dure style Kenney */
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    
+    padding: 0.5rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logo a {
+    font-family: 'Arial Black', sans-serif; /* Une typo grasse pour le côté jeu */
+    text-transform: uppercase;
+    color: var(--border-color);
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+/* Les liens ressemblent à des boutons */
+.nav-links a {
+    text-decoration: none;
+    color: var(--border-color);
+    font-weight: 800;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.1s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--accent-color);
+    border-color: var(--border-color);
+    /* On simule un clic : l'ombre diminue et l'élément descend */
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--border-color);
+}
+
+.post-mini-card {
+    position: relative; /* Indispensable pour que le lien se cale par rapport à la carte */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Le lien magique qui s'étend sur toute la carte */
+.main-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Il passe au-dessus du contenu */
+}
+
+/* On s'assure que la carte réagit au survol, même si on survole le lien */
+.post-mini-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0px var(--tab-border-color);
+}

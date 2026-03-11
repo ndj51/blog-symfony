@@ -1,0 +1,62 @@
+.main-header {
+    /* 1. Positionnement "Flottant" */
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    margin: 20px auto;
+    max-width: 1200px; /* Largeur max pour ne pas être trop étiré sur grand écran */
+    width: 90%;        /* Garde une marge sur les côtés */
+
+    /* 2. Look "Card Plastique" */
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 15px; /* Arrondis prononcés pour l'effet plastique */
+    
+    /* 3. L'ombre dure (sans flou) pour le relief */
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+}
+
+/* Style du Logo */
+.logo a {
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Liste des liens */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--border-color);
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
+}
+
+/* Effet "Bouton" au survol ET état actif */
+.nav-links a:hover,
+.nav-links a.active, /* Ajout du sélecteur spécifique pour le lien actif */
+.pill.active {
+    background-color: var(--accent-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+    /* Optionnel : ajouter une bordure pour marquer l'aspect bouton */
+    border: 2px solid var(--border-color);
+}

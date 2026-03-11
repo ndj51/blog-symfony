@@ -1,0 +1,25 @@
+# config/packages/liip_imagine.yaml
+liip_imagine:
+    driver: "gd"
+
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/public"
+                # Correction ici : on utilise cache_prefix
+                cache_prefix: "media/cache"
+
+    filter_sets:
+        cache: ~
+
+        thumbnail_list:
+            quality: 75
+            filters:
+                thumbnail: { size: [400, 250], mode: outbound }
+                strip: ~
+
+        article_view:
+            quality: 85
+            format: webp
+            filters:
+                relative_resize: { widen: 1200 }
