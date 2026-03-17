@@ -1,31 +1,101 @@
+/* base.css */
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif; /* On changera la typo plus tard */
-    background-color: var(--primary-bg); /* Un fond gris clair ou coloré */
+    font-family: sans-serif;
+    background-color: var(--primary-bg);
     background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-    background-size: 20px 20px; /* Petit motif de points pour le look "blueprint" */
+    background-size: 20px 20px;
     padding-bottom: 50px;
+    /* CORRECTION ICI */
+    overflow-x: hidden;
+    width: 100%;
+    font-size: var(--font-main);
+    line-height: 1.6;
+    /* Important pour ne pas fatiguer l'oeil : on laisse respirer les lignes */
 }
 
+h1,
+h2 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* CORRECTION ICI : Réduire le padding latéral sur mobile pour laisser place à l'ombre */
+    padding: 40px 15px;
+}
 
 .floating-card {
     background-color: var(--card-bg);
     border: 3px solid var(--border-color);
     border-radius: var(--radius);
-    
-    /* L'effet de relief "plastique" */
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    
-    /* Pour s'assurer que le contenu ne colle pas aux bordures */
     padding: 20px;
-    
-    /* Un petit effet de transition si on veut que la carte réagisse au survol */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+    /* CORRECTION ICI : S'assurer que la carte ne dépasse jamais 100% avec son ombre */
+    max-width: calc(100% - var(--shadow-offset));
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.container {
-    max-width: 1200px; /* On définit une largeur maximale */
-    margin: 0 auto;    /* On centre le tout */
-    padding: 40px 20px; /* On ajoute de l'air en haut et sur les côtés */
+
+@media (max-width: 768px) {
+    body {
+        /* 1.15rem ou 1.2rem est souvent le "sweet spot" sur mobile */
+        font-size: 1.15rem; 
+        background-color: var(--primary-bg); /* On enlève l'aqua ! */
+    }
+
+    .page-title, h1 {
+        /* Un titre à 2.4rem prend toute la largeur, 1.8rem est plus sage */
+        font-size: 1.8rem;
+    }
+
+    .nav-links a {
+        /* On aligne sur la taille du corps de texte ou un peu plus */
+        font-size: 1.1rem;
+    }
+
+    .container {
+        /* On réduit les marges pour gagner de la place sur petit écran */
+        padding: 20px 10px;
+    }
+
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centre l'avatar et le texte */
+        text-align: center;  /* Aligne le texte au milieu pour le style */
+        gap: 20px;
+    }
+
+    .about-image-side {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-avatar {
+        max-width: 150px; /* On réduit un peu l'avatar sur mobile */
+        height: auto;
+    }
+
+    .about-content-side {
+        width: 100%;
+        padding: 0; /* On enlève les marges qui pourraient pousser le texte dehors */
+    }
+
+    .about-text-body p {
+        text-align: left; /* On garde le corps de texte aligné à gauche pour la lecture */
+        font-size: 1.1rem; /* Un peu plus petit pour éviter les mots coupés */
+        line-height: 1.5;
+    }
+
+    .about-socials {
+        justify-content: center; /* Centre les boutons GitHub/LinkedIn */
+        flex-wrap: wrap;        /* Permet aux boutons de passer à la ligne s'ils sont trop larges */
+    }
 }

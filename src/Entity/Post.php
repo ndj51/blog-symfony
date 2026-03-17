@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 class Post
@@ -42,6 +43,9 @@ class Post
     )]
     private Collection $media;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
@@ -61,6 +65,9 @@ class Post
     public function setTitle(string $title): static
     {
         $this->title = $title;
+        // generation automatique du slug en fonction du titre :
+        $slugger = new AsciiSlugger();
+        $this->slug = strtolower($slugger->slug($title)->toString());
 
         return $this;
     }
@@ -139,6 +146,18 @@ class Post
                 $medium->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }

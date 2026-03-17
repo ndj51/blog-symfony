@@ -1,19 +1,16 @@
+/* card.css */
 .main-header {
-    /* Positionnement pour flotter en haut */
-    position: sticky;
+position: sticky;
     top: 20px;
     z-index: 1000;
     margin: 20px auto;
-    max-width: 95%; /* Ne touche pas les bords */
+    /* CORRECTION ICI : 90% au lieu de 95% pour laisser l'ombre respirer à droite */
+    max-width: 90%; 
     
-    /* Look "Plastic Card" */
     background-color: var(--card-bg);
     border: 3px solid var(--border-color);
     border-radius: 12px;
-    
-    /* L'ombre dure style Kenney */
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    
     padding: 0.5rem 0;
 }
 
@@ -76,4 +73,33 @@
 .post-mini-card:hover {
     transform: translate(-4px, -4px);
     box-shadow: 6px 6px 0px var(--tab-border-color);
+}
+
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column; /* Le logo au-dessus, le menu en-dessous */
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* Si trop de liens, ils passent à la ligne */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        padding: 12px 20px; /* On grossit la zone de clic (Target touch size) */
+        font-size: var(--font-nav);
+        flex-grow: 1; /* Les boutons prennent toute la largeur disponible */
+        text-align: center;
+        border: 2px solid var(--border-color); /* On renforce le look bouton */
+    }
+    
+    .logo a {
+        font-size: 1.8rem; /* On booste aussi le logo pour qu'il soit fier */
+    }
 }

@@ -1,7 +1,18 @@
+/* variable.css */
 :root {
     --primary-bg: #f0f0f0;         /* Gris très clair pour le fond du site */
     --card-bg: #ffffff;
     --border-color: #1a1a1a;       /* Noir profond pour les contours */
     --accent-color: #ffca28;       /* Un jaune "Kenney" pour les interactions */
     --shadow-offset: 4px;          /* L'épaisseur de l'ombre "plastique" */
+    --font-main: 1.2rem;      /* Au lieu de 16px (1rem), on passe à 17.6px */
+    --font-title: 2.2rem;
+    --font-nav: 1.05rem;
+    --radius: 12px;              /* Un rayon de bordure plus généreux pour un look plus doux */
+    
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+

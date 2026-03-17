@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Le garage d'un Geek{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         
@@ -47,11 +48,41 @@
         </main>
 
         {% block javascripts %}
-            {# 
-               Ce bloc reste vide ici car importmap est déjà chargé plus haut.
-               Il servira dans tes pages enfants (comme show.html.twig) 
-               pour ajouter des scripts spécifiques avec {{ parent() }}.
-            #}
+            {# Librairie pour l'agrandissement d'image (Lightbox) #}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.0.9/index.js"></script>
+            
+            <script>
+                /**
+                * On crée une fonction réutilisable pour transformer les images
+                */
+                function initializeLightbox() {
+                    const images = document.querySelectorAll('.about-text-body img, .post-full-content img, .post-content img');
+                    
+                    images.forEach(img => {
+                        // Sécurité pour ne pas ajouter le lien deux fois
+                        if (img.parentElement.tagName === 'A') return;
+
+                        const link = document.createElement('a');
+                        link.setAttribute('data-fslightbox', 'gallery');
+                        link.setAttribute('href', img.src);
+                        link.style.cursor = 'zoom-in';
+
+                        img.parentNode.insertBefore(link, img);
+                        link.appendChild(img);
+                    });
+
+                    // On rafraîchit la bibliothèque
+                    if (window.refreshFsLightbox) {
+                        refreshFsLightbox();
+                    }
+                }
+
+                // 1. Pour le premier chargement de la page
+                document.addEventListener("DOMContentLoaded", initializeLightbox);
+
+                // 2. POUR SYMFONY TURBO : On relance le script à chaque navigation
+                document.addEventListener("turbo:load", initializeLightbox);
+            </script>
         {% endblock %}
     </body>
 </html>
