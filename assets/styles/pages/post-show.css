@@ -94,3 +94,56 @@
     box-shadow: 3px 3px 0px #000;
     cursor: pointer;
 }
+
+/* --- Interactions de Likes --- */
+.post-separator {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 2rem 0;
+}
+
+.post-interactions {
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.pill-like {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 20px; /* On garde tes proportions Pill */
+    border-radius: 50px;
+    background-color: #f0f0f0;
+    color: #000;
+    border: 3px solid #000; /* Rappel de ton style actuel sur la capture */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.pill-like:hover:not(.is-disabled) {
+    background-color: #e2e2e2;
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0px #000;
+}
+
+.pill-like.is-active {
+    background-color: #ffeded;
+    color: #e02424;
+    border-color: #e02424;
+}
+
+.pill-like.is-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+.like-helper {
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-left: 10px;
+    color: #666;
+}

@@ -46,10 +46,17 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    /**
+     * @var Collection<int, PostLike>
+     */
+    #[ORM\OneToMany(targetEntity: PostLike::class, mappedBy: 'post')]
+    private Collection $postLikes;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Paris'));
-        $this->media = new ArrayCollection();    
+        $this->media = new ArrayCollection();
+        $this->postLikes = new ArrayCollection();    
     }
 
     public function getId(): ?int
@@ -160,5 +167,43 @@ class Post
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, PostLike>
+     */
+    public function getPostLikes(): Collection
+    {
+        return $this->postLikes;
+    }
+
+    public function addPostLike(PostLike $postLike): static
+    {
+        if (!$this->postLikes->contains($postLike)) {
+            $this->postLikes->add($postLike);
+            $postLike->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removePostLike(PostLike $postLike): static
+    {
+        if ($this->postLikes->removeElement($postLike)) {
+            // set the owning side to null (unless already changed)
+            if ($postLike->getPost() === $this) {
+                $postLike->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikeByUser(User $user): bool
+    {
+        foreach ($this->postLikes as $like) {
+            if ($like->getUser() === $user) return true;
+        }
+        return false;
     }
 }

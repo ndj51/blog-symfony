@@ -73,11 +73,32 @@
     <section class="floating-card" style="margin-top: 50px; text-align: center;">
         <h2>Restez informé</h2>
         <p>Inscrivez-vous à la newsletter.</p>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="{{ path('admin') }}" target="_blank" rel="noopener noreferrer" class="pill active">Accès easayAdmin</a>
-        </div><div style="text-align: center; margin-top: 30px;">
-            <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer" class="pill active">Accès a la bdd</a>
-        </div>
+        {# On vérifie si l'utilisateur est un Admin #}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+                
+                {# Lien dynamique vers l'admin #}
+                <a href="{{ path('admin') }}" target="_blank" rel="noopener noreferrer" class="pill active">
+                    Accès EasyAdmin
+                </a>
+
+                {# Le lien BDD ne s'affiche qu'en environnement de développement #}
+                {% if app.environment == 'dev' %}
+                    <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer" class="pill active" style="background-color: #d9534f;">
+                        Accès BDD (Dev Only)
+                    </a>
+                {% endif %}
+
+                <a href="{{ path('app_logout') }}" class="pill">Se déconnecter</a>
+            </div>
+        {% else %}
+            {# Si personne n'est connecté, on affiche juste le bouton de connexion #}
+            {% if not app.user %}
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{{ path('app_login') }}" class="pill">Connexion</a>
+                </div>
+            {% endif %}
+        {% endif %}
     </section>
 </div>
 {% endblock %}

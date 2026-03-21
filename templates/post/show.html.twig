@@ -30,6 +30,28 @@
             {{ post.content|markdown_to_html|optimize_images}}
         </div>
 
+        <hr class="separator"> {# ligne de séparation pour la structure #}
+
+        <section class"post-interations">
+            {% if app.user %}
+                <a href="{{ path('app_post_like', {'id': post.id}) }}"
+                    class="pill-like {{ post.isLikeByUser(app.user) ? 'is-active' : '' }}">
+                        <span class="like-icon">{{ post.isLikeByUser(app.user) ? '❤️' : '🤍' }}</span>
+                        <span class="like-count">{{ post.postLikes|length }}</span>
+                        <span class="like-label">{{ post.postLikes|length > 1 ? 'Likes' : 'Like' }}</span>
+                </a>
+            {% else %}
+                <div class="pill-like is-disabled">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">{{ post.postLikes|length }}</span>
+                    <span class="like-label">{{ post.postLikes|length > 1 ? 'Likes' : 'Like' }}</span>
+                    <a href="{{ path('app_login', { '_target_path': app.request.uri }) }}" class="like-helper">(Connectez-vous pour liker)</a>
+                </div>
+            {% endif %}
+        </section>
+
+
+
         <div class="share-section">
             <p class="share-title">Cet article t'a plu ?</p>
             
