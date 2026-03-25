@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<div class="container post-container">
+    <div class="main-display-card">
+        <h1 class="main-title">✉️ Nous contacter</h1>
+        <hr class="kenney-hr">
+
+        {# Affichage des message de succès #}
+        {% for message in app.flashes('success')%}
+            <div class="alert alert-success" style="margin-bottom: 20px; padding: 15px; border: 2px solid #4eaf4a;">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(contactForm) }}
+            <div class="form-group" style="margin-bottom: 15px;">
+                {{ form_label(contactForm.fullName) }}
+                {{ form_widget(contactForm.fullName) }}
+            </div>
+
+             <div class="form-group" style="margin-bottom: 15px;">
+                {{ form_label(contactForm.email) }}
+                {{ form_widget(contactForm.email) }}
+            </div>
+
+             <div class="form-group" style="margin-bottom: 15px;">
+                {{ form_label(contactForm.subject) }}
+                {{ form_widget(contactForm.subject) }}
+            </div>
+
+             <div class="form-group" style="margin-bottom: 20px;">
+                {{ form_label(contactForm.content) }}
+                {{ form_widget(contactForm.content) }}
+            </div>
+
+            <button type"submit" class="pill active">
+                🚀 Envoyer le message
+            </button>
+        {{ form_end(contactForm) }}
+    </div>
+</div>
+{% endblock %}

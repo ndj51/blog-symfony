@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use App\Entity\Post;
+use App\Entity\Contact;
 
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
@@ -52,5 +53,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégories', 'fas fa-tags', Category::class);
         yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Post::class);
+        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
     }
 }
