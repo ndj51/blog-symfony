@@ -6,12 +6,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use App\Form\RegistrationFormType;
+use App\Entity\User;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // Si l'utilisateur est déjà connecter, on l'envoie sur l page d'acceuil. 
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        // Préparation du formulaire d'inscription. 
+        $user = new User();
+        $registrationForm = $this->createForm(RegistrationFormType::class, $user, [
+            // On force l'action vers la route d'inscription 
+            // pour le traitement se fasse dans le RegistrationController
+            'action' => $this->generateUrl('app_register'), 
+        ]);
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -21,6 +35,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
+            'registrationForm' => $registrationForm->createView(),
         ]);
     }
 

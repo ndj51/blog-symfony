@@ -1,39 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Espace Membre{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+<div class="container post-container">
+    <div class="main-display-card">
+        <h1 class="main-title">Espace Membre</h1>
+        <hr class="kenney-hr">
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
+        <div class="auth-grid" style="display: flex; gap: 40px; flex-wrap: wrap;">
+            
+            {# --- COLONNE GAUCHE : CONNEXION --- #}
+            <div class="login-section" style="flex: 1; min-width: 300px;">
+                <h2 class="share-title">Déjà inscrit ?</h2>
+                
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="username">Email</label>
+                        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <input type="hidden" name="_target_path" value="{{ app.request.query.get('_target_path') }}">
+
+                    <button class="pill active" type="submit" style="margin-top: 20px;">
+                        🚀 Se connecter
+                    </button>
+                </form>
             </div>
-        {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
-        <input type="hidden" name="_target_path" value="{{ app.request.query.get('_target_path') }}">
+            {# Séparation visuelle verticale #}
+            <div class="separator-v" style="border-left: 2px solid #eee;"></div>
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+            {# --- COLONNE DROITE : INSCRIPTION --- #}
+            <div class="register-section" style="flex: 1; min-width: 300px;">
+                <h2 class="share-title">Nouveau ici ?</h2>
+                
+                {# On utilise la variable envoyée par le SecurityController #}
+                {{ form_start(registrationForm) }}
+                    <div class="form-group">
+                        {{ form_label(registrationForm.email, 'Votre adresse email') }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                    </div>
 
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+                    <div class="form-group" style="margin-top: 10px;">
+                        {{ form_label(registrationForm.plainPassword, 'Choisir un mot de passe') }}
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-check" style="margin-top: 15px;">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions d'utilisation", {'label_attr': {'style': 'display: inline; margin-left: 5px;'}}) }}
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+                    
+                    <input type="hidden" name="_target_path" value="{{ app.request.query.get('_target_path') }}">
+
+                    <button type="submit" class="pill" style="margin-top: 20px;">
+                        ✨ Créer mon compte
+                    </button>
+                {{ form_end(registrationForm) }}
             </div>
-        #}
-
-        <button class="btn btn-lg btn-primary" type="submit">
-            Se connecter
-        </button>
-    </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
