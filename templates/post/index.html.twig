@@ -1,17 +1,17 @@
+{# /templates/post/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Mon Blog{% endblock %}
 
 {% block body %}
-<div class="container">
     <header class="home-header">
         <h1 class="page-title">Tous les articles</h1>
         
         <nav class="category-pills">
-            <a href="{{ path('app_post') }}" class="pill {{ not currentCategory is defined ? 'active' : '' }}">Tous</a>
+            <a href="{{ path('app_post') }}" class="ui-pill-filter {{ not currentCategory is defined ? 'active' : '' }}">Tous</a>
             {% for category in categories %}
                 <a href="{{ path('app_post_category', {'id': category.id}) }}" 
-                   class="pill {{ (currentCategory is defined and currentCategory.id == category.id) ? 'active' : '' }}">
+                class="ui-pill-filter {{ (currentCategory is defined and currentCategory.id == category.id) ? 'active' : '' }}">
                     {{ category.name }}
                 </a>
             {% endfor %}
@@ -19,10 +19,9 @@
     </header>
 
     {% if posts is not empty %}
-        <section class="main-display-card floating-card">
+        <section class="ui-display-panel">
             <h2 class="main-title">Exploration</h2>
 
-            {# Changement ici : on utilise blog-list au lieu de articles-grid #}
             <div class="blog-list">
                 {% for post in posts %}
                     {{ include('post/_card.html.twig') }}
@@ -30,9 +29,8 @@
             </div>
         </section>
     {% else %}
-        <div class="floating-card empty-state">
+        <div class="ui-panel empty-state">
             <p>Aucun article trouvé dans cette catégorie.</p>
         </div>
     {% endif %}
-</div>
 {% endblock %}

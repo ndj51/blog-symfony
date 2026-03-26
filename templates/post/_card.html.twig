@@ -1,22 +1,22 @@
 {# /templates/post/_card.html.twig #}
-<article class="post-mini-card"> {# Correction : On utilise la classe du CSS #}
+<article class="ui-post-card">
     {# 1. Le lien invisible qui couvre toute la carte #}
     <a href="{{ path('app_post_show', {'id': post.id}) }}" class="main-link" aria-label="Lire l'article : {{ post.title }}"></a>
 
     <div class="mini-card-content">
         {# 2. Le Badge (épuré) #}
-        <span class="category-badge">{{ post.category.name }}</span>
+        <span class="ui-mini-badge">{{ post.category.name }}</span>
 
         {# 3. Le Titre #}
         <h2 class="post-title">{{ post.title }}</h2>
                 
-        {# 4. Le Résumé (On limite pour ne pas exploser la hauteur de la carte) #}
+        {# 4. Le Résumé #}
         <div class="post-summary">
             {{ post.summary|raw }}...
         </div>
 
         {# 5. L'indicateur visuel #}
-        <div class="read-more-indicator"> {# Correction : On utilise la classe du CSS #}
+        <div class="read-more-indicator">
             Lire la suite →
         </div>
     </div>

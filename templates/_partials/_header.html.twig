@@ -1,0 +1,43 @@
+{# templates/_partials/_header.html.twig #}
+<header class="ui-panel ui-header-panel">
+    <nav class="nav-container">
+        <div class="logo">
+            <a href="{{ path('app_home') }}">Le garage d'un Geek</a>
+        </div>
+                
+        <ul class="nav-links">
+            <li>
+                <a href="{{ path('app_home') }}" 
+                    class="ui-nav-link {{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_post') }}" 
+                    class="ui-nav-link {{ app.request.attributes.get('_route') starts with 'app_post' ? 'active' : '' }}">
+                    Blog
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('app_contact') }}" 
+                    class="ui-nav-link {{ app.request.attributes.get('_route') == 'app_contact' ? 'active' : '' }}">
+                    Contact
+                </a>
+            </li>
+
+            {# --- BLOC CONNEXION --- #}
+            {% if app.user %}
+                <li>
+                    <a href="{{ path('app_logout') }}" class="ui-pill-filter">Déconnexion</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}" 
+                        class="ui-pill-filter {{ app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}">
+                        Connexion
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

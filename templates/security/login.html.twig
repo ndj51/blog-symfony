@@ -1,17 +1,18 @@
+{# /templates/security/login.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Espace Membre{% endblock %}
 
 {% block body %}
-<div class="container post-container">
-    <div class="main-display-card">
+<div class="post-container">
+    <div class="ui-display-panel">
         <h1 class="main-title">Espace Membre</h1>
-        <hr class="kenney-hr">
+        <hr class="ui-separator-thick">
 
-        <div class="auth-grid" style="display: flex; gap: 40px; flex-wrap: wrap;">
+        <div class="auth-grid">
             
             {# --- COLONNE GAUCHE : CONNEXION --- #}
-            <div class="login-section" style="flex: 1; min-width: 300px;">
+            <div class="login-section">
                 <h2 class="share-title">Déjà inscrit ?</h2>
                 
                 <form method="post">
@@ -21,51 +22,50 @@
 
                     <div class="form-group">
                         <label for="username">Email</label>
-                        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                        <input type="email" value="{{ last_username }}" name="_username" id="username" class="ui-input" autocomplete="email" required autofocus>
                     </div>
                     
-                    <div class="form-group" style="margin-top: 10px;">
+                    <div class="form-group">
                         <label for="password">Mot de passe</label>
-                        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                        <input type="password" name="_password" id="password" class="ui-input" autocomplete="current-password" required>
                     </div>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <input type="hidden" name="_target_path" value="{{ app.request.query.get('_target_path') }}">
 
-                    <button class="pill active" type="submit" style="margin-top: 20px;">
+                    <button class="ui-pill-filter active" type="submit">
                         🚀 Se connecter
                     </button>
                 </form>
             </div>
 
             {# Séparation visuelle verticale #}
-            <div class="separator-v" style="border-left: 2px solid #eee;"></div>
+            <div class="separator-v"></div>
 
             {# --- COLONNE DROITE : INSCRIPTION --- #}
-            <div class="register-section" style="flex: 1; min-width: 300px;">
+            <div class="register-section">
                 <h2 class="share-title">Nouveau ici ?</h2>
                 
-                {# On utilise la variable envoyée par le SecurityController #}
                 {{ form_start(registrationForm) }}
                     <div class="form-group">
                         {{ form_label(registrationForm.email, 'Votre adresse email') }}
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'ui-input'}}) }}
                     </div>
 
-                    <div class="form-group" style="margin-top: 10px;">
+                    <div class="form-group">
                         {{ form_label(registrationForm.plainPassword, 'Choisir un mot de passe') }}
-                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'ui-input'}}) }}
                     </div>
 
-                    <div class="form-check" style="margin-top: 15px;">
+                    <div class="form-check">
                         {{ form_widget(registrationForm.agreeTerms) }}
-                        {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions d'utilisation", {'label_attr': {'style': 'display: inline; margin-left: 5px;'}}) }}
+                        {{ form_label(registrationForm.agreeTerms, "J'accepte les conditions d'utilisation") }}
                         {{ form_errors(registrationForm.agreeTerms) }}
                     </div>
                     
                     <input type="hidden" name="_target_path" value="{{ app.request.query.get('_target_path') }}">
 
-                    <button type="submit" class="pill" style="margin-top: 20px;">
+                    <button type="submit" class="ui-pill-filter">
                         ✨ Créer mon compte
                     </button>
                 {{ form_end(registrationForm) }}

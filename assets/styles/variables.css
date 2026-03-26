@@ -1,18 +1,17 @@
-/* variable.css */
+/* assets/styles/variables.css */
+
 :root {
-    --primary-bg: #f0f0f0;         /* Gris très clair pour le fond du site */
+    --primary-bg: #f0f0f0;         /* Fond principal du site */
     --card-bg: #ffffff;
-    --border-color: #1a1a1a;       /* Noir profond pour les contours */
-    --accent-color: #ffca28;       /* Un jaune "Kenney" pour les interactions */
-    --shadow-offset: 4px;          /* L'épaisseur de l'ombre "plastique" */
-    --font-main: 1.2rem;      /* Au lieu de 16px (1rem), on passe à 17.6px */
+    --border-color: #1a1a1a;       /* Couleur des contours et ombres */
+    --accent-color: #ffca28;       /* Couleur d'accentuation pour les interactions */
+    --shadow-offset: 4px;          /* Décalage de l'ombre portée */
+    --font-main: 1.2rem;           
     --font-title: 2.2rem;
     --font-nav: 1.05rem;
-    --radius: 12px;              /* Un rayon de bordure plus généreux pour un look plus doux */
-    
+    --radius: 12px;                /* Rayon de bordure global */
 }
 
 *, *::before, *::after {
     box-sizing: border-box;
 }
-

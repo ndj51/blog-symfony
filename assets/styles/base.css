@@ -1,4 +1,4 @@
-/* base.css */
+/* assets/styles/base.css */
 body {
     margin: 0;
     padding: 0;
@@ -7,12 +7,10 @@ body {
     background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
     background-size: 20px 20px;
     padding-bottom: 50px;
-    /* CORRECTION ICI */
     overflow-x: hidden;
     width: 100%;
     font-size: var(--font-main);
     line-height: 1.6;
-    /* Important pour ne pas fatiguer l'oeil : on laisse respirer les lignes */
 }
 
 h1,
@@ -24,51 +22,124 @@ h2 {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    /* CORRECTION ICI : Réduire le padding latéral sur mobile pour laisser place à l'ombre */
     padding: 40px 15px;
 }
 
-.floating-card {
+/* Renommé : .floating-card -> .ui-panel */
+.ui-panel {
     background-color: var(--card-bg);
     border: 3px solid var(--border-color);
     border-radius: var(--radius);
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
     padding: 20px;
     transition: all 0.2s ease;
-    /* CORRECTION ICI : S'assurer que la carte ne dépasse jamais 100% avec son ombre */
     max-width: calc(100% - var(--shadow-offset));
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Renommé : .pill-admin-db -> .ui-button-admin */
+.ui-button-admin {
+    background-color: #d9534f;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.1s;
+}
+
+.ui-button-admin:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.ui-button-admin:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.ui-lightbox-trigger { 
+    cursor: zoom-in; 
+}
+
+.ui-alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.ui-alert-success {
+    background-color: #f0f9f0;
+    border: 2px solid #4eaf4a;
+    color: #2e662c;
+}
+
+.ui-text-center { 
+    text-align: center; 
+}
+
+.ui-text-lead { 
+    font-size: 1.2rem; margin: 20px 0; 
+}
+
+.ui-text-muted { 
+    margin-top: 40px; font-size: 0.8rem; opacity: 0.5; 
+}
+
+.ui-italic {
+    font-style: italic;
+}
+
+.ui-button-admin {
+    background-color: #ffcc00; /* Jaune pour l'admin/BDD */
+    color: var(--border-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: 3px solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--border-color);
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.1s;
+}
+
+.ui-button-admin:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--border-color);
+    background-color: #ffd633;
+}
+
 
 @media (max-width: 768px) {
     body {
-        /* 1.15rem ou 1.2rem est souvent le "sweet spot" sur mobile */
         font-size: 1.15rem; 
-        background-color: var(--primary-bg); /* On enlève l'aqua ! */
+        background-color: var(--primary-bg);
     }
 
     .page-title, h1 {
-        /* Un titre à 2.4rem prend toute la largeur, 1.8rem est plus sage */
         font-size: 1.8rem;
     }
 
     .nav-links a {
-        /* On aligne sur la taille du corps de texte ou un peu plus */
         font-size: 1.1rem;
     }
 
     .container {
-        /* On réduit les marges pour gagner de la place sur petit écran */
         padding: 20px 10px;
     }
 
     .about-grid {
         display: flex;
         flex-direction: column;
-        align-items: center; /* Centre l'avatar et le texte */
-        text-align: center;  /* Aligne le texte au milieu pour le style */
+        align-items: center;
+        text-align: center;
         gap: 20px;
     }
 
@@ -79,23 +150,24 @@ h2 {
     }
 
     .about-avatar {
-        max-width: 150px; /* On réduit un peu l'avatar sur mobile */
+        max-width: 150px;
         height: auto;
     }
 
     .about-content-side {
         width: 100%;
-        padding: 0; /* On enlève les marges qui pourraient pousser le texte dehors */
+        padding: 0;
     }
 
     .about-text-body p {
-        text-align: left; /* On garde le corps de texte aligné à gauche pour la lecture */
-        font-size: 1.1rem; /* Un peu plus petit pour éviter les mots coupés */
+        text-align: left;
+        font-size: 1.1rem;
         line-height: 1.5;
     }
 
     .about-socials {
-        justify-content: center; /* Centre les boutons GitHub/LinkedIn */
-        flex-wrap: wrap;        /* Permet aux boutons de passer à la ligne s'ils sont trop larges */
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
+

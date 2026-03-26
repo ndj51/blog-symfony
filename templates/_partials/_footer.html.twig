@@ -1,0 +1,21 @@
+{# templates/_partials/_footer.html.twig #}
+<footer class="ui-panel ui-footer-panel">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>&copy; {{ "now"|date("Y") }} - Le garage d'un Geek</p>
+        </div>
+
+        <nav class="footer-nav">
+            <a href="{{ path('app_home') }}" class="ui-nav-link">Accueil</a>
+            <a href="{{ path('app_contact') }}" class="ui-nav-link">Contact</a>
+            
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('admin') }}" target="_blank" rel="noopener noreferrer" class="ui-pill-filter active">EasyAdmin</a>
+                <a href="{{ db_gui_url }}" target="_blank" rel="noopener noreferrer" class="ui-button-admin">BDD 🗄️</a>
+                <a href="{{ path('app_logout') }}" class="ui-pill-filter">Déconnexion</a>
+            {% elseif not app.user %}
+                <a href="{{ path('app_login') }}" class="ui-pill-filter">Connexion</a>
+            {% endif %}
+        </nav>
+    </div>
+</footer>

@@ -1,0 +1,21 @@
+/* assets/styles/pages/blog.css */
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.blog-filters {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Si tu veux une mise en page spécifique pour la liste du blog */
+.blog-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}

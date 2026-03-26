@@ -1,7 +1,7 @@
+{# /templates/post/show.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block javascripts %}
-    {# On appelle le script uniquement ici #}
     {{ parent() }}
     <script src="{{ asset('js/share.js') }}"></script>
 {% endblock %}
@@ -9,39 +9,39 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
-<div class="container post-container">
+<div class="post-container">
     
     <div class="back-button-wrapper">
-        <a href="{{ path('app_post') }}" class="pill">← Retour aux articles</a>
+        <a href="{{ path('app_post') }}" class="ui-pill-button">← Retour aux articles</a>
     </div>
 
-    <article class="main-display-card">
+    <article class="ui-display-panel">
         <header>
-            <span class="category-badge">{{ post.category.name }}</span>
+            <span class="ui-badge">{{ post.category.name }}</span>
             <h1 class="main-title">{{ post.title }}</h1>
             <p class="post-metadata">
                 Posté par <strong>Admin</strong> • le {{ post.createdAt|date('d/m/Y') }}
             </p>
         </header>
 
-        <hr class="kenney-hr">
+        <hr class="ui-separator-thick">
 
        <div class="post-full-content">
             {{ post.content|markdown_to_html|optimize_images}}
         </div>
 
-        <hr class="separator"> {# ligne de séparation pour la structure #}
+        <hr class="post-separator">
 
-        <section class"post-interations">
+        <section class="post-interactions">
             {% if app.user %}
                 <a href="{{ path('app_post_like', {'id': post.id}) }}"
-                    class="pill-like {{ post.isLikeByUser(app.user) ? 'is-active' : '' }}">
+                    class="ui-pill-like {{ post.isLikeByUser(app.user) ? 'is-active' : '' }}">
                         <span class="like-icon">{{ post.isLikeByUser(app.user) ? '❤️' : '🤍' }}</span>
                         <span class="like-count">{{ post.postLikes|length }}</span>
                         <span class="like-label">{{ post.postLikes|length > 1 ? 'Likes' : 'Like' }}</span>
                 </a>
             {% else %}
-                <div class="pill-like is-disabled">
+                <div class="ui-pill-like is-disabled">
                     <span class="like-icon">❤️</span>
                     <span class="like-count">{{ post.postLikes|length }}</span>
                     <span class="like-label">{{ post.postLikes|length > 1 ? 'Likes' : 'Like' }}</span>
@@ -50,14 +50,12 @@
             {% endif %}
         </section>
 
-
-
         <div class="share-section">
             <p class="share-title">Cet article t'a plu ?</p>
             
             <div class="share-actions">
                 <button id="copy-share-link" 
-                    class="pill active" 
+                    class="ui-pill-button active" 
                     data-url="{{ url('app_post_show', {id: post.id}) }}">
                     <span>🔗</span> Copier le lien de l'article
                 </button>
@@ -68,7 +66,7 @@
     </article>
 
     <div class="back-button-wrapper">
-        <a href="{{ path('app_post') }}" class="pill">← Retour aux articles</a>
+        <a href="{{ path('app_post') }}" class="ui-pill-button">← Retour aux articles</a>
     </div>
 </div>
 {% endblock %}

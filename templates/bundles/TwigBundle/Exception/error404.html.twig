@@ -4,21 +4,21 @@
 {% block title %}Page introuvable - 404{% endblock %}
 
 {% block body %}
-<div class="container post-container">
-    <div class="main-display-card" style="text-align: center;">
+<div class="post-container">
+    <div class="ui-display-panel ui-text-center">
         <h1 class="main-title">404 - Perdu dans les pixels ? 🕹️</h1>
-        <hr class="kenney-hr">
+        <hr class="ui-separator-thick">
         
-        <p style="font-size: 1.2rem; margin: 20px 0;">
+        <p class="ui-text-lead">
             Désolé, la page que tu cherches n'existe pas ou a été déplacée. 
             (Peut-être qu'elle s'est cachée derrière un buisson !)
         </p>
 
-        <div style="margin-top: 30px;">
-            <a href="{{ path('app_home') }}" class="pill active">Retourner à l'accueil</a>
+        <div class="ui-actions-center">
+            <a href="{{ path('app_home') }}" class="ui-pill-filter active">Retourner à l'accueil</a>
         </div>
         
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">
+        <p class="ui-text-muted">
             Code erreur : 404 Not Found
         </p>
     </div>

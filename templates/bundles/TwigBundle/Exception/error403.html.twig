@@ -4,21 +4,21 @@
 {% block title %}Accès Refusé !{% endblock %}
 
 {% block body %}
-<div class="container post-container">
-    <div class="main-display-card" style="text-align: center;">
+<div class="post-container">
+    <div class="ui-display-panel ui-text-center">
         <h1 class="main-title">Oups ! Zone Interdite 🚧</h1>
-        <hr class="kenney-hr">
+        <hr class="ui-separator-thick">
         
-        <p style="font-size: 1.2rem; margin: 20px 0;">
+        <p class="ui-text-lead">
             Désolé, mais tu n'as pas les permissions nécessaires pour accéder à cette page. 
             C'est réservé aux administrateurs !
         </p>
 
-        <div style="margin-top: 30px;">
-            <a href="{{ path('app_home') }}" class="pill active">Retour à l'accueil</a>
+        <div class="ui-actions-center">
+            <a href="{{ path('app_home') }}" class="ui-pill-filter active">Retour à l'accueil</a>
         </div>
         
-        <p style="margin-top: 20px; font-style: italic; opacity: 0.7;">
+        <p class="ui-text-muted ui-italic">
             (Erreur 403 : Forbidden)
         </p>
     </div>
