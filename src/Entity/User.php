@@ -1,5 +1,5 @@
 <?php
-
+// src/Entity/User.php //
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -41,9 +41,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: PostLike::class, mappedBy: 'user')]
     private Collection $postLikes;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $nickName = null;
+
+    #[ORM\Column]
+    private ?bool $isHideNicknameWarning = null;
+
     public function __construct()
     {
         $this->postLikes = new ArrayCollection();
+        $this->isHideNicknameWarning = false;
     }
 
     public function getId(): ?int
@@ -149,5 +156,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getNickName(): ?string
+    {
+        return $this->nickName;
+    }
+
+    public function setNickName(?string $nickName): static
+    {
+        $this->nickName = $nickName;
+
+        return $this;
+    }
+
+    public function isHideNicknameWarning(): ?bool
+    {
+        return $this->isHideNicknameWarning;
+    }
+
+    public function setIsHideNicknameWarning(bool $isHideNicknameWarning): static
+    {
+        $this->isHideNicknameWarning = $isHideNicknameWarning;
+
+        return $this;
+    }
+
+    public function getDisplayName(): string
+    {
+        // Si l'utilisateur a un pseudo, on l'affiche
+        if($this->nickName){
+            return $this->nickName;
+        }
+
+        //Sinon on lui créer un basé sur l'id mais hash
+        $hash = substr(md5($this->getUserIdentifier()), 0, 5);
+
+        return 'Maker_' . $hash;
     }
 }

@@ -9,6 +9,10 @@
 
         {# 3. Le Titre #}
         <h2 class="post-title">{{ post.title }}</h2>
+        <span class="ui-stat-likes" title="Nombre de j'aime">
+            <span class="stat-icon">❤️</span> 
+            <span class="stat-value">{{ post.postLikes|length }}</span>
+        </span>
                 
         {# 4. Le Résumé #}
         <div class="post-summary">
@@ -19,5 +23,8 @@
         <div class="read-more-indicator">
             Lire la suite →
         </div>
+        <div class="ui-card-stats">
+
+    </div>
     </div>
 </article>

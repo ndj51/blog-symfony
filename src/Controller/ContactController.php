@@ -10,17 +10,18 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 
+
 final class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $constact = new Contact();
-        $form = $this->createForm(ContactType::class, $constact);
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($constact);
+            $entityManager->persist($contact);
             $entityManager->flush();
 
             $this->addFlash('success', 'Votre message a bien été envoyé !');
