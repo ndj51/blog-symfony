@@ -1,109 +1,98 @@
 /* assets/styles/components/card.css */
-
 /* Renommé : .main-header -> .ui-header-panel */
 .ui-header-panel {
-    position: sticky;
-    top: 20px;
-    z-index: 1000;
-    margin: 20px auto;
-    /* CORRECTION CONSERVÉE : 90% pour laisser l'ombre respirer */
-    max-width: 90%; 
-    
-    background-color: var(--card-bg);
-    border: 3px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-    padding: 0.5rem 0;
+position: sticky;
+top: 20px;
+z-index: 1000;
+margin: 20px auto;
+/* CORRECTION CONSERVÉE : 90% pour laisser l'ombre
+respirer */
+max-width: 90%;
+background-color: var(--card-bg);
+border: 3px solid var(--border-color);
+border-radius: 12px;
+box-shadow: var(--shadow-offset) var(--shadow-offset) 0px
+var(--border-color);
+padding: 0.5rem 0;
 }
-
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 30px;
 }
-
 .logo a {
-    font-family: 'Arial Black', sans-serif; /* Typo grasse conservée */
-    text-transform: uppercase;
-    color: var(--border-color);
-    text-decoration: none;
-    font-size: 1.4rem;
+font-family: 'Arial Black', sans-serif; /* Typo grasse
+conservée */
+text-transform: uppercase;
+color: var(--border-color);
+text-decoration: none;
+font-size: 1.4rem;
 }
-
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 15px;
+display: flex;
+list-style: none;
+gap: 15px;
 }
-
-/* Les liens ressemblent à des boutons : .nav-links a -> .ui-nav-link */
+/* Les liens ressemblent à des boutons : .nav-links a -> .ui-
+nav-link */
 .ui-nav-link {
-    text-decoration: none;
-    color: var(--border-color);
-    font-weight: 800;
-    padding: 8px 16px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    transition: all 0.1s ease;
+text-decoration: none;
+color: var(--border-color);
+font-weight: 800;
+padding: 8px 16px;
+border: 2px solid transparent;
+border-radius: 8px;
+transition: all 0.1s ease;
 }
-
 .ui-nav-link:hover {
-    background-color: var(--accent-color);
-    border-color: var(--border-color);
-    /* Simulation clic conservée */
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px var(--border-color);
+background-color: var(--accent-color);
+border-color: var(--border-color);
+/* Simulation clic conservée */
+transform: translate(2px, 2px);
+box-shadow: 1px 1px 0px var(--border-color);
 }
-
 /* Renommé : .post-mini-card -> .ui-post-card */
 .ui-post-card {
-    position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+position: relative;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 /* Le lien magique qui s'étend sur toute la carte */
 .main-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1;
 }
-
 /* Survol de la carte conservé */
 .ui-post-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 6px 6px 0px var(--tab-border-color);
+transform: translate(-4px, -4px);
+box-shadow: 6px 6px 0px var(--tab-border-color);
 }
-
-
 @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .ui-nav-link {
-        padding: 12px 20px;
-        font-size: var(--font-nav);
-        flex-grow: 1;
-        text-align: center;
-        border: 2px solid var(--border-color);
-    }
-    
-    .logo a {
-        font-size: 1.8rem;
-    }
+.nav-container {
+flex-direction: column;
+padding: 15px;
+gap: 15px;
 }
-
+.nav-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+width: 100%;
+}
+.ui-nav-link {
+padding: 12px 20px;
+font-size: var(--font-nav);
+flex-grow: 1;
+text-align: center;
+border: 2px solid var(--border-color);
+}
+.logo a {
+font-size: 1.8rem;
+}
+}
+———————————————————————————

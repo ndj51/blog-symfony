@@ -1,80 +1,76 @@
 /* assets/styles/components/footer.css */
-
 .ui-footer-panel {
-    margin: 80px auto 40px auto; 
-    width: 90%;
-    max-width: 1200px;
+margin: 80px auto 40px auto;
+width: 90%;
+max-width: 1200px;
 }
-
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 15px 30px;
-    min-height: 70px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 30px;
+min-height: 70px;
 }
-
 .footer-info p {
-    margin: 0;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--border-color);
-    display: flex;
-    align-items: center;
+margin: 0;
+font-weight: 800;
+text-transform: uppercase;
+font-size: 0.85rem;
+color: var(--border-color);
+display: flex;
+align-items: center;
 }
-
 .footer-nav {
-    display: flex;
-    gap: 15px;
-    align-items: center; /* Aligne tout le monde sur l'axe central vertical */
+display: flex;
+gap: 15px;
+align-items: center; /* Aligne tout le monde sur l'axe
+central vertical */
 }
-
 /* On harmonise TOUS les éléments cliquables du footer */
 .footer-nav .ui-nav-link,
 .footer-nav .ui-pill-filter,
 .footer-nav .ui-button-admin {
-    text-decoration: none;
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 38px; /* Hauteur fixe pour un alignement au laser */
-    box-sizing: border-box;
-    transition: all 0.1s ease;
+text-decoration: none;
+font-weight: 800;
+text-transform: uppercase;
+font-size: 0.8rem;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+height: 38px; /* Hauteur fixe pour un alignement au laser
+*/
+box-sizing: border-box;
+transition: all 0.1s ease;
 }
-
 /* Liens simples */
 .footer-nav .ui-nav-link {
-    color: var(--border-color);
-    padding: 0 12px;
-    border: 3px solid transparent;
+color: var(--border-color);
+padding: 0 12px;
+border: 3px solid transparent;
 }
-
 .footer-nav .ui-nav-link:hover {
-    background-color: var(--accent-color);
-    transform: translate(-2px, -2px);
-    box-shadow: 2px 2px 0px var(--border-color);
-    border: 2px solid var(--border-color);
+background-color: var(--accent-color);
+transform: translate(-2px, -2px);
+box-shadow: 2px 2px 0px var(--border-color);
+border: 2px solid var(--border-color);
 }
-
-/* Ajustement pour les boutons qui ont déjà des bordures/ombres */
+/* Ajustement pour les boutons qui ont déjà des bordures/
+ombres */
 .footer-nav .ui-pill-filter,
 .footer-nav .ui-button-admin {
-    padding: 0 16px;
-    margin: 0; /* On retire les marges parasites */
+padding: 0 16px;
+margin: 0; /* On retire les marges parasites */
 }
-
 @media (max-width: 900px) {
-    .footer-container {
-        flex-direction: column;
-        gap: 20px;
-        padding: 25px;
-    }
-    .footer-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.footer-container {
+flex-direction: column;
+gap: 20px;
+padding: 25px;
 }
+.footer-nav {
+flex-wrap: wrap;
+justify-content: center;
+}
+}
+————————————————————————
+

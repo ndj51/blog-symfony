@@ -65,3 +65,9 @@ Bash
 symfony server:stop
 brew services stop mysql
 brew services stop httpd
+
+Pour mettre le projet en sécurité : 
+    git status
+    git add .
+    git commit -m "détail des nouveautées"
+    git push

@@ -1,0 +1,33 @@
+/* assets/styles/components/panels.css */
+
+.ui-panel {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.ui-post-card {
+    position: relative;
+    background: #fff;
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    transition: all 0.1s steps(4);
+}
+
+.ui-post-card:hover {
+    background-color: var(--accent-color);
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px var(--border-color);
+}
+
+.ui-display-panel {
+    padding: 40px;
+    background-color: white;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px #000;
+}

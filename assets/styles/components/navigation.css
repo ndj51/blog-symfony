@@ -1,0 +1,44 @@
+/* assets/styles/components/navigation.css */
+
+
+/* header */
+.ui-header-panel {
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 90%;
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+    padding: 0.5rem 0;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 25px; }
+.logo a {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+}
+.nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+
+/* footer */
+
+.ui-footer-panel { margin: 80px auto 40px auto; width: 90%; max-width: 1200px; }
+.footer-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; min-height: 70px; }
+.footer-info p { margin: 0; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; color: var(--border-color); display: flex; align-items: center; }
+.footer-nav { display: flex; gap: 15px; align-items: center; }
+
+.footer-nav .ui-nav-link, .footer-nav .ui-pill-filter, .footer-nav .ui-button-admin {
+    text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 0.8rem;
+    display: inline-flex; align-items: center; justify-content: center; height: 38px; transition: all 0.1s ease;
+}
+@media (max-width: 900px) {
+    .footer-container { flex-direction: column; gap: 20px; padding: 25px; }
+    .footer-nav { flex-wrap: wrap; justify-content: center; }
+}

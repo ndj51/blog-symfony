@@ -1,74 +1,64 @@
 /* assets/styles/pages/contact.css */
-
 .contact-container {
-    max-width: 800px;
-    margin: 0 auto;
+max-width: 800px;
+margin: 0 auto;
 }
-
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+display: flex;
+flex-direction: column;
+gap: 20px;
 }
-
 /* Style générique pour les champs de saisie */
 .ui-input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 3px solid var(--border-color);
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    background-color: #fff;
-    transition: border-color 0.2s;
+width: 100%;
+padding: 12px 15px;
+border: 3px solid var(--border-color);
+border-radius: 8px;
+font-family: inherit;
+font-size: 1rem;
+background-color: #fff;
+transition: border-color 0.2s;
 }
-
 .ui-input:focus {
-    outline: none;
-    border-color: var(--accent-color);
+outline: none;
+border-color: var(--accent-color);
 }
-
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 15px; /* Ajouté pour remplacer le style inline */
+display: flex;
+flex-direction: column;
+gap: 8px;
+margin-top: 15px; /* Ajouté pour remplacer le style inline
+*/
 }
-
 .form-group label {
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+font-weight: 800;
+text-transform: uppercase;
+font-size: 0.9rem;
 }
-
 /* --- Structure d'authentification (Login/Register) --- */
-
 .auth-grid {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+display: flex;
+gap: 40px;
+flex-wrap: wrap;
 }
-
-.login-section, 
+.login-section,
 .register-section {
-    flex: 1;
-    min-width: 300px;
+flex: 1;
+min-width: 300px;
 }
-
 .separator-v {
-    border-left: 2px solid #eee;
+border-left: 2px solid #eee;
 }
-
 /* Ajustement pour les cases à cocher */
 .form-check {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
+margin-top: 15px;
+display: flex;
+align-items: center;
 }
-
 .form-check label {
-    display: inline;
-    margin-left: 8px;
-    text-transform: none; /* Plus lisible pour des CGU */
-    font-weight: 500;
+display: inline;
+margin-left: 8px;
+text-transform: none; /* Plus lisible pour des CGU */
+font-weight: 500;
 }
+——————————————————————

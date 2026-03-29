@@ -14,7 +14,11 @@
     <div class="back-button-wrapper">
         <a href="{{ path('app_post') }}" class="ui-pill-button">← Retour aux articles</a>
     </div>
-
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <article class="ui-display-panel">
         <header>
             <span class="ui-badge">{{ post.category.name }}</span>
@@ -64,7 +68,54 @@
             </div>
         </div>
     </article>
+    <section class="ui-display-panel">
+        <h3 class="">
+            <i class="fa-solid fa-comments"></i> 
+            {{ post.comments|length }} Commentaire(s)
+        </h3>
+        {{ form_start(commentForm) }}
+        {{ form_row(commentForm.content) }}
+        {% if app.user %}
+            <button type="submit" class="">Publier</button>
+        {% else %}
+            <div class="">
+                <p>Vous devez être <a href="{{ path('app_login', { '_target_path': app.request.uri }) }}" class="like-helper">connecté</a> pour commenter.</p>
+                <button type="button" class="" disabled>Publier (Connexion requise)</button>
+            </div>
+        {% endif %}
+        {{ form_end(commentForm) }}
+        <div class="">
+            {% for comment in post.comments %}
+                <article class="ui-post-card">
+                    <header class="">
+                        <span class="">{{ comment.user.displayName }}</span>
 
+                        <div class="">
+                            {% for badge in comment.user.badges %}
+                                <span class="" title="{{ badge.label }}" style="background-color: {{ badge.color }};">
+                                    {% if badge.icon %}
+                                        <i class="fa-solid {{ badge.icon }}"></i>
+                                    {% endif %}
+                                    <span class="">{{ badge.label }}</span>
+                                </span>
+                            {% endfor %}
+                        </div>
+
+                        <time class="" datetime="{{ comment.createdAt|date('c') }}">
+                            Posté le {{ comment.createdAt|date('d/m/Y à H:i') }}
+                        </time>
+                    </header>
+
+                    <div class="">
+                        {{ comment.content|nl2br }}
+                    </div>
+                    <hr class="post-separator">
+                </article>
+            {% else %}
+                <p class="">Aucun commentaire pour le moment.</p>
+            {% endfor %}
+        </div>
+    </section>
     <div class="back-button-wrapper">
         <a href="{{ path('app_post') }}" class="ui-pill-button">← Retour aux articles</a>
     </div>

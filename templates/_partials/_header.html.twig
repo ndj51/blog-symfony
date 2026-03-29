@@ -28,6 +28,13 @@
             {# --- BLOC CONNEXION --- #}
             {% if app.user %}
                 <li>
+                    <a href="{{ path('app_user_profile') }}" 
+                        class="ui-nav-link {{ app.request.attributes.get('_route') == 'app_user_profile' ? 'active' : '' }}">
+                        Bonjour {{ app.user.displayName }}
+                        👤 
+                    </a>
+                </li>
+                <li>
                     <a href="{{ path('app_logout') }}" class="ui-pill-filter">Déconnexion</a>
                 </li>
             {% else %}

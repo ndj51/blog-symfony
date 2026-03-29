@@ -9,6 +9,11 @@ use App\Repository\PostRepository;
 use App\Repository\CategoryRepository;
 use App\Entity\Post;
 use App\Entity\Category;
+use App\Entity\Comment;
+use App\Form\CommentType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Parsedown;
 
 final class PostController extends AbstractController
@@ -41,10 +46,34 @@ final class PostController extends AbstractController
         ]);
     }
     #[Route('/blog/article/{id}', name: 'app_post_show')]
-    public function show(Post $post, CategoryRepository $categoryRepository): Response
+    public function show(Post $post, Request $request, EntityManagerInterface $em): Response
     {
+        $user = $this->getUser();
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if (!$user){
+                $this->addFlash('error', 'Vous devez être connecté pour laisser un commentaire');
+                return $this->redirectToRoute('app_login');
+            }
+            $comment->setPost($post);
+            $comment->setUser($this->getUser()); // Récupère l'user connecté
+            $comment->setCreatedAt(new \DateTimeImmutable());
+
+            $em->persist($comment);
+            $em->flush();
+
+            // On redirige pour eviter le double envoi au rafraissement
+            $this->addFlash('success', 'Votre commentaire a bien été ajouté !');
+            return $this->redirectToRoute('app_post_show',['id' => $post->getId()]);
+        }
+
         return $this->render('post/show.html.twig', [
             'post' => $post,
+            'commentForm' => $form->createView(),
         ]);
     }
 }

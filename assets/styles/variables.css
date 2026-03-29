@@ -1,15 +1,17 @@
 /* assets/styles/variables.css */
+/* fait */
+
 
 :root {
-    --primary-bg: #f0f0f0;         /* Fond principal du site */
+    --primary-bg: #f0f0f0; /* Fond principal du site */
     --card-bg: #ffffff;
-    --border-color: #1a1a1a;       /* Couleur des contours et ombres */
-    --accent-color: #ffca28;       /* Couleur d'accentuation pour les interactions */
-    --shadow-offset: 4px;          /* Décalage de l'ombre portée */
-    --font-main: 1.2rem;           
+    --border-color: #1a1a1a; /* Couleur des contours et ombres */
+    --accent-color: #ffca28; /* Couleur d'accentuation pour les interactions */
+    --shadow-offset: 4px; /* Décalage de l'ombre portée */
+    --font-main: 1.2rem;
     --font-title: 2.2rem;
     --font-nav: 1.05rem;
-    --radius: 12px;                /* Rayon de bordure global */
+    --radius: 12px; /* Rayon de bordure global */
 }
 
 *, *::before, *::after {

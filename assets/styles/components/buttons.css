@@ -1,0 +1,23 @@
+/* assets/styles/components/buttons.css */
+
+.ui-nav-link, .ui-nav-button {
+    text-decoration: none; color: var(--border-color); font-weight: 800;
+    padding: 8px 16px; border-radius: 8px; transition: all 0.1s ease;
+}
+.ui-nav-link:hover, .ui-nav-button:hover, .ui-nav-button.active {
+    background-color: var(--accent-color);
+    border: 2px solid var(--border-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+.ui-button-admin {
+    background-color: #ffcc00; color: var(--border-color);
+    padding: 8px 16px; font-weight: 800; text-transform: uppercase;
+    border: 3px solid var(--border-color); box-shadow: 3px 3px 0px var(--border-color);
+    border-radius: 8px; display: inline-block; transition: all 0.1s;
+}
+.ui-pill-like {
+    display: inline-flex; align-items: center; gap: 0.5rem; padding: 10px 20px;
+    border-radius: 50px; background-color: #f0f0f0; border: 3px solid #000;
+    font-weight: bold; transition: all 0.2s ease; cursor: pointer;
+}

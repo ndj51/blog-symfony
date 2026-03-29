@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil - {{ parent() }}{% endblock %}
+
+{% block body %}
+<section class="ui-panel ui-display-panel">
+    
+    <header class="ui-panel-header">
+        <h1 class="ui-title-main">Espace Personnel</h1>
+        
+    </header>
+
+    {# --- NOTIFICATIONS --- #}
+    {% for message in app.flashes('success') %}
+        <div class="ui-alert ui-alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# --- CONTENU DU PROFIL --- #}
+    <div class="ui-card-content">
+        
+        <div class="ui-info-badge">
+            <span class="ui-label">Identité actuelle :</span>
+            <span class="ui-value-highlight">{{ app.user.displayName }}</span>
+        </div>
+        <div class="user-badges" style="display: inline-block; margin-left: 5px;">
+        <h3>Mes badges <small>( Attrapé les tous )</smal></h3>
+        {% for badge in app.user.badges %}
+            <span class="badge" 
+                style="background-color: {{ badge.color }}; color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; margin-right: 5px;"
+                title="{{ badge.label }}">
+                
+                {% if badge.icon %}
+                    <i class="fa-solid {{ badge.icon }}"></i>
+                {% endif %}
+                
+                {{ badge.label }}
+            </span>
+        {% endfor %}
+        </div>
+
+        <hr class="ui-separator">
+
+        {# --- FORMULAIRE --- #}
+        {{ form_start(profileForm, {'attr': {'class': 'ui-form'}}) }}
+            
+            <div class="ui-form-group">
+                {{ form_label(profileForm.nickName, 'Ton Pseudo Maker', {'label_attr': {'class': 'ui-form-label'}}) }}
+                {{ form_widget(profileForm.nickName, {
+                    'attr': {
+                        'class': 'ui-form-input',
+                        'placeholder': 'Ex: Jean_Le_Maker'
+                    }
+                }) }}
+                {% if form_help(profileForm.nickName) %}
+                    <div class="ui-form-help">{{ form_help(profileForm.nickName) }}</div>
+                {% endif %}
+                {{ form_errors(profileForm.nickName) }}
+            </div>
+
+            <div class="ui-form-check">
+                {{ form_widget(profileForm.isHideNicknameWarning, {'attr': {'class': 'ui-checkbox'}}) }}
+                {{ form_label(profileForm.isHideNicknameWarning, null, {'label_attr': {'class': 'ui-check-label'}}) }}
+            </div>
+
+            <div class="ui-form-actions">
+                <button type="submit" class="ui-button-admin">
+                    Enregistrer les modifications
+                </button>
+            </div>
+
+        {{ form_end(profileForm) }}
+
+    </div>
+
+</section>
+{% endblock %}
